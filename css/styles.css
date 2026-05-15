@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    display: flex;
+    gap: 10px;
+}
+
+#tasksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* margin-top: 20px; */
+}
+
+.stats {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    min-height: 50px;
+    font-size: 14px;
+}
+

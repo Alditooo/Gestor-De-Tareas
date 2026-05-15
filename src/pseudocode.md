@@ -1,0 +1,1 @@
+toggleTask() ===> funcion que busca en el array un id dado y le cambia el valor "completed" y luego llama a "renderTask()"
