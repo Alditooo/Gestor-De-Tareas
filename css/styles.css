@@ -1,30 +1,136 @@
+/* ---------------------- */
+/* ESTILO GENERAL */
+/* ---------------------- */
+
 body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    padding-top: 40px;
+    background: #f7f7f7;
+    font-family: "Inter", sans-serif;
 }
+
+/* ---------------------- */
+/* CONTENEDOR DE INPUTS */
+/* ---------------------- */
 
 #container {
     display: flex;
     gap: 10px;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
+
+#input, #select {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+#input:focus, #select:focus {
+    border-color: #888;
+}
+
+/* ---------------------- */
+/* BOTÓN ADD */
+/* ---------------------- */
+
+#btnAdd {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnAdd:hover {
+    background: #45a049;
+}
+
+/* ---------------------- */
+/* LISTA DE TAREAS */
+/* ---------------------- */
 
 #tasksContainer {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    /* margin-top: 20px; */
+    gap: 8px;
+    width: 300px;
 }
+
+/* Cada tarea como tarjeta */
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: 0.2s;
+}
+
+.task:hover {
+    background: #f0f0f0;
+}
+
+/* ---------------------- */
+/* BOTÓN BORRAR */
+/* ---------------------- */
+
+.btnDel {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.btnDel:hover {
+    transform: scale(1.2);
+    color: red;
+}
+
+/* ---------------------- */
+/* CHECKBOX */
+/* ---------------------- */
+
+.checkbox {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.checkbox:hover {
+    transform: scale(1.2);
+}
+
+/* ---------------------- */
+/* TAREA COMPLETADA */
+/* ---------------------- */
+
+.taskCompleted {
+    text-decoration: line-through;
+    opacity: 0.3;
+    background: #e8e8e8;
+}
+
+/* ---------------------- */
+/* STATS */
+/* ---------------------- */
 
 .stats {
     margin-top: 20px;
-    padding: 10px;
-    background: #f3f3f3;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    min-height: 50px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     font-size: 14px;
+    width: 200px;
 }
-

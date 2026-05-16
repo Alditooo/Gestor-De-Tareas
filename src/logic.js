@@ -5,14 +5,29 @@ const btnAdd = document.querySelector("#btnAdd")
 const taskContainer = document.querySelector("#tasksContainer")
 const statsContainer = document.querySelector("#stats")
 
-
 let taskArray = []
+let idCounter = 0
+
+//LOCAL STORAGE
+const saved = localStorage.getItem("tasks")
+
+if (saved) {
+    taskArray = JSON.parse(saved)
+    
+    if (taskArray.length > 0) {
+        idCounter = taskArray[taskArray.length - 1].id + 1
+    } else {
+        idCounter = 0
+    }
+    renderTask()
+    getStats()
+}
 
 //-- FUNCTION TO ADD A TASK IN THE ARRAY --
 function addTask() {
 
     const newTask = {
-        id: taskArray.length,
+        id: idCounter++,
         name: input.value,
         category: select.value,
         completed: false
@@ -23,8 +38,16 @@ function addTask() {
     renderTask()
     clearValues()
     getStats()
+    saveOnStorage()
 }
 
+function delTask(id) {
+    taskArray = taskArray.filter(task => task.id !== id)
+
+    renderTask()
+    getStats()
+    saveOnStorage()
+}
 
 function toggleTask(id) {
 
@@ -37,25 +60,37 @@ function toggleTask(id) {
 
     renderTask()
     getStats()
+    saveOnStorage()
 }
 
 function renderTask() {
     taskContainer.innerHTML = ""
     taskArray.forEach(task =>  {
         const taskRender = document.createElement("div")
+        taskRender.classList.add("task")
+        if (task.completed) {
+            taskRender.classList.add("taskCompleted")
+        }
         const checkbox = document.createElement("input")
+        checkbox.classList.add("checkbox")
         checkbox.type = "checkbox"
-
-        const textContent = document.createTextNode(` ${task.name} ${task.category.toUpperCase()}`)
+        const btnDel = document.createElement("button")
+        btnDel.classList = "btnDel"
+        btnDel.textContent = "🗑️"
+        const textContent = document.createTextNode(` ${task.name} [${task.category.toUpperCase()}]`)
         
         checkbox.addEventListener("change", () => toggleTask(task.id))
+        btnDel.addEventListener("click", () => delTask(task.id))
         checkbox.checked = task.completed
         taskRender.appendChild(checkbox)
         taskRender.appendChild(textContent)
+        taskRender.appendChild(btnDel)
+        // Aqui va el boton de borrar la tarea
 
         taskContainer.appendChild(taskRender)
     })
 }
+
 
 function getStats() {
     // CREATE COUNTERS
@@ -73,7 +108,6 @@ function getStats() {
         if (task.category === "studies") studiesTasks++
         if (task.completed === true) completed++
         if (task.completed === false) uncompleted++
-        statsContainer.classList = "stats"
     })
 
     statsContainer.innerHTML = `
@@ -85,12 +119,23 @@ function getStats() {
     <strong>Studies:</strong> ${studiesTasks} <br>
     `
 }
-
+getStats()
 function clearValues() {
     input.value = ""
-    select.value = "work"
 }
 
 //-- EVENTS --
 
 btnAdd.addEventListener("click", addTask)
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        addTask()
+    }
+})
+
+function saveOnStorage(){
+    const savedOnStorage = JSON.stringify(taskArray)
+    localStorage.setItem("tasks", savedOnStorage)
+
+}
