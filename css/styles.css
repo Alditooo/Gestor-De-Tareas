@@ -12,36 +12,49 @@ body {
 }
 
 /* ---------------------- */
-/* CONTENEDOR DE INPUTS */
+/* BLOQUE SUPERIOR: TAREAS */
 /* ---------------------- */
 
 #container {
-    display: flex;
-    gap: 10px;
     background: white;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 16px;
+    border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-#input, #select {
-    padding: 6px 10px;
+#input {
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
     outline: none;
 }
 
-#input:focus, #select:focus {
+#input:focus {
     border-color: #888;
 }
 
-/* ---------------------- */
-/* BOTÓN ADD */
-/* ---------------------- */
+#taskRow {
+    display: flex;
+    gap: 10px;
+}
+
+#select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+#select:focus {
+    border-color: #888;
+}
 
 #btnAdd {
-    padding: 6px 12px;
+    padding: 8px 14px;
     border: none;
     border-radius: 6px;
     background: #4CAF50;
@@ -55,6 +68,68 @@ body {
 }
 
 /* ---------------------- */
+/* SEPARADOR */
+/* ---------------------- */
+
+.separator {
+    width: 330px;
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* ---------------------- */
+/* BLOQUE INFERIOR: CATEGORÍAS */
+/* ---------------------- */
+
+#categoryBlock {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 330px;
+}
+
+#newCategory {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+#newCategory:focus {
+    border-color: #888;
+}
+
+#addCategory {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#addCategory:hover {
+    background: #45a049;
+}
+
+/* ---------------------- */
+/* FILTROS */
+/* ---------------------- */
+
+#filters {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+}
+
+/* ---------------------- */
 /* LISTA DE TAREAS */
 /* ---------------------- */
 
@@ -62,10 +137,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 300px;
+    width: 330px;
 }
 
-/* Cada tarea como tarjeta */
 .task {
     display: flex;
     align-items: center;

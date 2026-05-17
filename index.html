@@ -7,18 +7,44 @@
     <title>Gestor de Tareas</title>
 </head>
 <body>
+
+    <!-- BLOQUE SUPERIOR: CREAR TAREAS -->
     <div id="container">
-    <input type="text" id="input" autocomplete="off" placeholder="Type a task">
-    <select id="select">
-        <option value="work">WORK</option>
-        <option value="home">HOME</option>
-        <option value="studies">STUDIES</option>
-    </select>
-    <button id="btnAdd">ENTER</button>
+        <input type="text" id="input" autocomplete="off" placeholder="Type a task">
+
+        <div id="taskRow">
+            <select id="select">
+                <option value="work">WORK</option>
+                <option value="home">HOME</option>
+                <option value="studies">STUDIES</option>
+            </select>
+
+            <button id="btnAdd">ENTER</button>
+        </div>
     </div>
-    <hr width="315px">
+
+    <!-- SEPARADOR -->
+    <hr class="separator">
+
+    <!-- BLOQUE INFERIOR: CREAR CATEGORÍAS
+    <div id="categoryBlock">
+        <input type="text" id="newCategory" placeholder="New Category">
+        <button id="addCategory">ADD NEW</button>
+    </div> -->
+
+    <!-- FILTROS -->
+    <div id="filters">
+        <label><input type="checkbox" id="allCheckbox"> All</label>
+        <label><input type="checkbox" id="uncompletedChcekbox"> Uncompleted</label>
+        <label><input type="checkbox" id="completedCheckbox"> Completed</label>
+    </div> <br>
+
+    <!-- LISTA DE TAREAS -->
     <div id="tasksContainer"></div>
+
+    <!-- STATS -->
     <div id="stats" class="stats"></div>
+
+    <script src="src/logic.js"></script>
 </body>
-<script src="src/logic.js"></script>
 </html>

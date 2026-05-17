@@ -4,9 +4,36 @@ const select = document.querySelector("#select")
 const btnAdd = document.querySelector("#btnAdd")
 const taskContainer = document.querySelector("#tasksContainer")
 const statsContainer = document.querySelector("#stats")
+const filterComplete = document.querySelector("#completedCheckbox")
+const filterUncomplete = document.querySelector("#uncompletedChcekbox")
+const filterAll = document.querySelector("#allCheckbox")
 
 let taskArray = []
 let idCounter = 0
+let filter = "all"
+filterAll.checked = true
+
+filterComplete.addEventListener("click", () => {
+    filter = "completed"
+    filterUncomplete.checked = false
+    filterAll.checked = false
+    renderTask()
+})
+
+filterUncomplete.addEventListener("click", () => {
+    filter = "uncompleted"
+    filterComplete.checked = false
+    filterAll.checked = false
+    renderTask()
+})
+
+filterAll.addEventListener("change", () => {
+    filter = "all"
+    filterComplete.checked = false
+    filterUncomplete.checked = false
+    renderTask()
+})
+
 
 //LOCAL STORAGE
 const saved = localStorage.getItem("tasks")
@@ -65,7 +92,14 @@ function toggleTask(id) {
 
 function renderTask() {
     taskContainer.innerHTML = ""
-    taskArray.forEach(task =>  {
+
+    taskArray
+        .filter(task => {
+            if (filter === "all") return true
+            if (filter === "completed") return task.completed
+            if (filter === "uncompleted") return !task.completed
+        })
+        .forEach(task =>  {
         const taskRender = document.createElement("div")
         taskRender.classList.add("task")
         if (task.completed) {
